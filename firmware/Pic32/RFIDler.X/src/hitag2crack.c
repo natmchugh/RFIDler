@@ -1038,7 +1038,7 @@ BOOL hitag2_reader(BYTE *response, BYTE *key, BOOL interactive)
     
     response[0] = '\0';
     // auth to tag
-    if (hitag2_crypto_auth(tmp, key))
+    if (hitag2_crypto_auth(tmp, key) || hitag2_pwd_auth(tmp, key))
     {
         // read tag, one page at a time
         for (i= 0; i <= 7; ++i)

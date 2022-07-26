@@ -1570,6 +1570,7 @@ BYTE ProcessSerialCommand(char *command)
                 tmpint= 0;
             
             commandok= command_ack(DATA);
+            UserMessage("Reading with key: %s \r\n", local_tmp);
             while(!get_user_abort())
             {
                 hitag2_reader(DataBuff, local_tmp, (BOOL) tmpint);
@@ -1849,7 +1850,7 @@ BYTE ProcessSerialCommand(char *command)
                tmpint1=  tmpint;
 
             if(RFIDlerConfig.TagType != RFIDlerVTag.TagType)
-                commandok= command_nack("VTag not compatible!");
+                commandok= command_nack("VTag not compatible! no idea why this matters");
             else
             {
             if(tmpint > RFIDlerConfig.DataBlocks - 1 || tmpint1 > RFIDlerConfig.DataBlocks - 1)
